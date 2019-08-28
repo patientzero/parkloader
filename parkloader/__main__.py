@@ -20,9 +20,14 @@ def main():
         return
 
     prl = ParkLoader(file_name)
+    logging.info(prl.names)
     for name in prl.names:
         data = prl.load(name)
-        print(name, "Labels: ", sorted(set(data.train_labels)))
+        print(name, "Labels: ", sorted(set(data.data.label)))
+        for train, test, train_lbls, test_lbls, pid in data.leave_one_out(True):
+            assert(len(train) == len(train_lbls))
+            assert(len(test) == len(test_lbls))
+            print(pid)
 
 
 if __name__ == "__main__":
