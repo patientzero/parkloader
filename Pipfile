@@ -7,7 +7,7 @@ name = "pypi"
 pandas = "*"
 
 [dev-packages]
-pip = "==18"
+pip = "==21.1"
 
 [requires]
 python_version = "3.6"
